@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Auto-Repair | Automation at it's level</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #2d2d2d;
+            --accent-red: #c62828;
+            --accent-blue: #1565c0;
+            --accent-grey: #424242;
+            --accent-metal: #607d8b;
+            --text-light: #f5f5f5;
+            --text-grey: #bdbdbd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--primary-dark);
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--secondary-dark);
+            padding: 15px 0;
+            border-bottom: 3px solid var(--accent-red);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            color: var(--accent-red);
+            font-size: 2.5rem;
+            margin-right: 10px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--text-grey);
+            font-style: italic;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--accent-red);
+            border-bottom: 2px solid var(--accent-red);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--text-grey);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            border: none;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-red);
+            color: var(--text-light);
+        }
+        
+        .btn-primary:hover {
+            background-color: #b71c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent-blue);
+            color: var(--text-light);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #0d47a1;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--accent-metal);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-metal);
+            transform: translateY(-3px);
+        }
+        
+        /* Services Overview */
+        .services-overview {
+            padding: 80px 0;
+            background-color: var(--secondary-dark);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-red);
+            margin: 15px auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--primary-dark);
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            border-top: 4px solid var(--accent-blue);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Why Choose Us */
+        .why-choose-us {
+            padding: 80px 0;
+            background-color: var(--primary-dark);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
+            background-color: var(--accent-blue);
+            color: var(--text-light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Services Page */
+        .services-page {
+            padding: 80px 0;
+            background-color: var(--secondary-dark);
+        }
+        
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-detail {
+            background-color: var(--primary-dark);
+            padding: 30px;
+            border-radius: 5px;
+            border-left: 4px solid var(--accent-red);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .service-header i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-right: 15px;
+        }
+        
+        .service-detail h3 {
+            font-size: 1.6rem;
+        }
+        
+        .service-time {
+            background-color: var(--accent-grey);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+        
+        .service-detail p {
+            margin-bottom: 20px;
+            color: var(--text-grey);
+        }
+        
+        /* Booking System */
+        .booking-system {
+            padding: 80px 0;
+            background-color: var(--primary-dark);
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .booking-form {
+            background-color: var(--secondary-dark);
+            padding: 40px;
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--primary-dark);
+            border: 1px solid var(--accent-grey);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* About Us */
+        .about-us {
+            padding: 80px 0;
+            background-color: var(--secondary-dark);
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-photos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .photo {
+            background-color: var(--accent-grey);
+            height: 200px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .photo-main {
+            grid-column: span 2;
+            height: 250px;
+        }
+        
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+        
+        .about-content h3 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            color: var(--accent-red);
+        }
+        
+        .philosophy {
+            background-color: var(--primary-dark);
+            padding: 20px;
+            border-left: 4px solid var(--accent-blue);
+            margin: 25px 0;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            padding: 60px 0 30px;
+            border-top: 3px solid var(--accent-red);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-contact h4,
+        .footer-hours h4 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-red);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--accent-grey);
+            color: var(--text-grey);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .booking-container,
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-dark);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px;
+                border-bottom: 1px solid var(--accent-grey);
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Page Content Handling */
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        /* Placeholder Images */
+        .photo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-grey);
+            font-size: 3rem;
+        }
+    </style>
+
+<!-- Titanic Auto Repair - Classic Wrench Favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232d2d2d'
+rx='20'/%3E%3Cpath d='M30 25 L45 40 L35 55 L25 45 L30 25' fill='%23c62828'/%3E%3Cpath d='M65 35 L80 50 L70 65 L55 50 L65 35' fill='%231565c0'/%3E%3Ccircle cx='45' cy='55' r='8' fill='%23c62828'/%3E%3Ccircle cx='55' cy='45' r='8' fill='%231565c0'/%3E%3C/svg%3E">
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Titanic Auto-Repair</h1>
+                    <p>Automation at it's level</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-page="booking">Booking</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section class="page-content active" id="home-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h2>Reliable Auto Repairs. Honest Prices. Fast Service.</h2>
+                <p>Your trusted partner for all automotive repairs since 2018</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary" id="bookServiceBtn">
+                        <i class="fas fa-calendar-check"></i> Book Service
+                    </a>
+                    <a href="tel:+1234567890" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/1234567890" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Services Overview -->
+        <section class="services-overview">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-car-battery"></i>
+                        </div>
+                        <h3>Engine Diagnostics</h3>
+                        <p>Advanced diagnostics to pinpoint engine issues accurately.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <h3>Oil Change</h3>
+                        <p>Quality oil changes to keep your engine running smoothly.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Brake Repair</h3>
+                        <p>Complete brake system inspection and repair services.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Suspension</h3>
+                        <p>Professional suspension and steering system repairs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-choose-us">
+            <div class="container">
+                <h2 class="section-title">Why Choose Titanic Auto-Repair</h2>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>6+ Years Experience</h3>
+                            <p>We've been fixing cars in this community since 2018, building trust with every repair.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Modern Tools</h3>
+                            <p>State-of-the-art diagnostic equipment and tools for accurate, efficient repairs.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Honest Service</h3>
+                            <p>Transparent pricing and honest assessments - no unnecessary repairs.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Fast Turnaround</h3>
+                            <p>We respect your time. Most repairs completed within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Services Page -->
+    <section class="page-content" id="services-page">
+        <section class="services-page">
+            <div class="container">
+                <h2 class="section-title">Our Repair Services</h2>
+                <div class="services-list">
+                    <!-- Service 1 -->
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <i class="fas fa-car-battery"></i>
+                            <h3>Engine Repair & Diagnostics</h3>
+                        </div>
+                        <div class="service-time">2-5 hours • Comprehensive</div>
+                        <p>Advanced diagnostic tools to identify engine problems accurately. We handle everything from minor tune-ups to major overhauls.</p>
+                        <button class="btn btn-primary request-service" data-service="Engine Repair & Diagnostics">Request Service</button>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <i class="fas fa-oil-can"></i>
+                            <h3>Oil Change & Servicing</h3>
+                        </div>
+                        <div class="service-time">30-60 mins • Extends Engine Life</div>
+                        <p>Regular oil changes with quality filters and fluids to keep your engine running smoothly and efficiently.</p>
+                        <button class="btn btn-primary request-service" data-service="Oil Change & Servicing">Request Service</button>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h3>Brake System Repair</h3>
+                        </div>
+                        <div class="service-time">2-4 hours • Safety Critical</div>
+                        <p>Complete brake inspection, pad replacement, rotor resurfacing, and hydraulic system repairs for your safety.</p>
+                        <button class="btn btn-primary request-service" data-service="Brake System Repair">Request Service</button>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <i class="fas fa-cogs"></i>
+                            <h3>Suspension & Steering</h3>
+                        </div>
+                        <div class="service-time">3-6 hours • Smooth Ride</div>
+                        <p>Repair and replacement of shocks, struts, control arms, and steering components for optimal handling.</p>
+                        <button class="btn btn-primary request-service" data-service="Suspension & Steering">Request Service</button>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <i class="fas fa-car-crash"></i>
+                            <h3>Body Work & Painting</h3>
+                        </div>
+                        <div class="service-time">1-3 days • Restores Appearance</div>
+                        <p>Dent removal, panel beating, and professional painting to restore your vehicle's appearance after accidents.</p>
+                        <button class="btn btn-primary request-service" data-service="Body Work & Painting">Request Service</button>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Electrical Systems</h3>
+                        </div>
+                        <div class="service-time">1-4 hours • Precision Work</div>
+                        <p>Diagnosis and repair of starting, charging, lighting, and accessory electrical systems in modern vehicles.</p>
+                        <button class="btn btn-primary request-service" data-service="Electrical Systems">Request Service</button>
+                    </div>
+                    
+                    <!-- Service 7 -->
+                    <div class="service-detail">
+                        <div class="service-header">
+                            <i class="fas fa-tire"></i>
+                            <h3>Tyres & Wheel Alignment</h3>
+                        </div>
+                        <div class="service-time">45-90 mins • Improves Handling</div>
+                        <p>Tire replacement, rotation, balancing, and precision wheel alignment for better handling and tire life.</p>
+                        <button class="btn btn-primary request-service" data-service="Tyres & Wheel Alignment">Request Service</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Booking Page -->
+    <section class="page-content" id="booking-page">
+        <section class="booking-system">
+            <div class="container">
+                <h2 class="section-title">Book Your Service</h2>
+                <div class="booking-container">
+                    <div class="booking-form">
+                        <form id="serviceBookingForm">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="vehicle">Vehicle Make & Model</label>
+                                <input type="text" id="vehicle" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service Needed</label>
+                                <select id="service" class="form-control" required>
+                                    <option value="">Select a service</option>
+                                    <option value="Engine Repair & Diagnostics">Engine Repair & Diagnostics</option>
+                                    <option value="Oil Change & Servicing">Oil Change & Servicing</option>
+                                    <option value="Brake System Repair">Brake System Repair</option>
+                                    <option value="Suspension & Steering">Suspension & Steering</option>
+                                    <option value="Body Work & Painting">Body Work & Painting</option>
+                                    <option value="Electrical Systems">Electrical Systems</option>
+                                    <option value="Tyres & Wheel Alignment">Tyres & Wheel Alignment</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Preferred Date</label>
+                                <input type="date" id="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Additional Details</label>
+                                <textarea id="message" class="form-control" placeholder="Describe the issue or any specific requirements..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Submit Booking Request
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Contact Information</h3>
+                        <div class="feature" style="margin-bottom: 30px;">
+                            <div class="feature-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Call Us</h3>
+                                <p>+1 (234) 567-890</p>
+                                <p>Mon-Sat: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="feature" style="margin-bottom: 30px;">
+                            <div class="feature-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>WhatsApp</h3>
+                                <p>+1 (234) 567-890</p>
+                                <p>Quick responses during business hours</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Visit Our Garage</h3>
+                                <p>123 Mechanic Street</p>
+                                <p>Auto City, AC 12345</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 40px; background-color: var(--secondary-dark); padding: 25px; border-radius: 5px;">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 15px;">What happens next?</h3>
+                            <ol style="padding-left: 20px; color: var(--text-grey);">
+                                <li style="margin-bottom: 10px;">We'll contact you within 2 hours to confirm your booking</li>
+                                <li style="margin-bottom: 10px;">Get a transparent estimate before any work begins</li>
+                                <li style="margin-bottom: 10px;">Drop off your vehicle at the scheduled time</li>
+                                <li>We'll update you on progress and notify when ready</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- About Us Page -->
+    <section class="page-content" id="about-page">
+        <section class="about-us">
+            <div class="container">
+                <h2 class="section-title">About Titanic Auto-Repair</h2>
+                <div class="about-container">
+                    <div class="about-photos">
+                        <div class="photo photo-main">
+                            <div class="photo-placeholder">
+                                <i class="fas fa"><img src="https://i.pinimg.com/1200x/9d/4f/03/9d4f03b2edbdbad7df332fe1f9750b57.jpg" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <i class="fas fa"><img src="https://i.pinimg.com/1200x/89/e8/2f/89e82f7da48467a9972085b058270f41.jpg" alt=""></i>
+                            </div>
+                        </div>
+                        <div class="photo">
+                            <div class="photo-placeholder">
+                                <i class="fas fa"><img src="https://i.pinimg.com/736x/cd/65/f0/cd65f012257538b4ae96a00881e02f21.jpg" alt=""></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-content">
+                        <h2>6 Years of Trusted Auto Repairs</h2>
+                        <p>Since 2018, Titanic Auto-Repair has been the go-to garage for reliable, honest automotive repairs in our community. We started with a simple mission: to provide quality repairs at fair prices with exceptional customer service.</p>
+                        
+                        <h3>Our Skills & Certifications</h3>
+                        <p>Our team holds certifications in:</p>
+                        <ul style="margin-left: 20px; margin-bottom: 20px; color: var(--text-grey);">
+                            <li>ASE Certified Master Technician</li>
+                            <li>Advanced Engine Diagnostics Specialist</li>
+                            <li>Hybrid & Electric Vehicle Systems</li>
+                            <li>Brake System & Suspension Specialist</li>
+                            <li>EPA Section 609 Certification (A/C Systems)</li>
+                        </ul>
+                        
+                        <div class="philosophy">
+                            <p>"We fix it right the first time. No shortcuts, no compromises - just quality work that lasts."</p>
+                        </div>
+                        
+                        <h3>Our Work Philosophy</h3>
+                        <p>We believe in treating every vehicle as if it were our own. That means using quality parts, following manufacturer specifications, and never recommending unnecessary repairs. Our "fix it right the first time" approach has earned us a reputation for reliability and trustworthiness.</p>
+                        
+                        <p>When you bring your vehicle to Titanic Auto-Repair, you're not just getting a repair - you're getting peace of mind knowing that experienced technicians are taking care of your transportation needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Titanic Auto-Repair</h3>
+                    <p style="color: var(--text-grey);">Automation at it's level</p>
+                    <p style="margin-top: 15px;">Your trusted auto repair partner since 2018. Quality repairs, honest service, fair prices.</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Mechanic Street, Auto City, AC 12345</p>
+                    <p><i class="fas fa-phone"></i> +1 (254) 767-890</p>
+                    <p><i class="fab fa-whatsapp"></i> +1 (254) 767-890</p>
+                    <p><i class="fas fa-envelope"></i> service@titanicautorepair.com</p>
+                </div>
+                <div class="footer-hours">
+                    <h4>Business Hours</h4>
+                    <p>Monday - Friday: 6:00 AM - 7:00 PM</p>
+                    <p>Saturday: 9:00 AM - 4:00 PM</p>
+                    <p>Sunday: Emergency Services Only</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Titanic Auto-Repair. All rights reserved.</p>
+                <p>Designed for mechanics, not luxury showrooms.</p>
+            </div>
+        </div>
+        <!-- Security Meta Tags -->
+<meta name="rating" content="general">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="theme-color" content="#c62828">
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Page Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageContents = document.querySelectorAll('.page-content');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Get the target page
+                const targetPage = link.getAttribute('data-page');
+                
+                // Update active nav link
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show target page, hide others
+                pageContents.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === `${targetPage}-page`) {
+                        page.classList.add('active');
+                    }
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Book Service button from hero section
+        const bookServiceBtn = document.getElementById('bookServiceBtn');
+        if (bookServiceBtn) {
+            bookServiceBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Switch to booking page
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                    if (navLink.getAttribute('data-page') === 'booking') {
+                        navLink.classList.add('active');
+                    }
+                });
+                
+                // Show booking page
+                pageContents.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === 'booking-page') {
+                        page.classList.add('active');
+                    }
+                });
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        
+        // Request Service buttons on services page
+        const requestServiceBtns = document.querySelectorAll('.request-service');
+        requestServiceBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const service = btn.getAttribute('data-service');
+                
+                // Switch to booking page
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                    if (navLink.getAttribute('data-page') === 'booking') {
+                        navLink.classList.add('active');
+                    }
+                });
+                
+                // Show booking page
+                pageContents.forEach(page => {
+                    page.classList.remove('active');
+                    if (page.id === 'booking-page') {
+                        page.classList.add('active');
+                    }
+                });
+                
+                // Set the service in the booking form
+                const serviceSelect = document.getElementById('service');
+                if (serviceSelect) {
+                    serviceSelect.value = service;
+                }
+                
+                // Close mobile menu if open
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+        
+        // Booking Form Submission
+        const bookingForm = document.getElementById('serviceBookingForm');
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const service = document.getElementById('service').value;
+                
+                // In a real application, you would send this data to a server
+                // For now, we'll show a confirmation message
+                alert(`Thank you, ${name}! Your booking request for ${service} has been received. We'll call you at ${phone} within 2 hours to confirm.`);
+                
+                // Reset form
+                bookingForm.reset();
+                
+                // Set date to tomorrow as default
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const formattedDate = tomorrow.toISOString().split('T')[0];
+                document.getElementById('date').value = formattedDate;
+            });
+        }
+        
+        // Set minimum date for booking to tomorrow
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const formattedDate = tomorrow.toISOString().split('T')[0];
+            dateInput.min = formattedDate;
+            dateInput.value = formattedDate;
+        }
+    </script>
+</body>
+</html>
