@@ -6,3 +6,5 @@ We are a dedicated automotive service garage built on experience, precision, and
 Our team combines hands-on mechanical expertise with modern diagnostic tools to ensure every repair is accurate and long-lasting. We believe in fixing problems properly the first time — not temporarily masking them.<br>
 
 Our garage is more than a workspace — it’s a place where quality craftsmanship meets dependable service. From minor adjustments to major rebuilds, we stand behind every job we complete.
+
+<img width="1353" height="604" alt="image" src="https://github.com/user-attachments/assets/a3e08c57-4aff-462d-bcbe-56bf2094ced7" />
