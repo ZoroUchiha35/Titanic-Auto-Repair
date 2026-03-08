@@ -10,3 +10,6 @@ Our garage is more than a workspace — it’s a place where quality craftsmansh
 <img width="1353" height="604" alt="image" src="https://github.com/user-attachments/assets/a3e08c57-4aff-462d-bcbe-56bf2094ced7" />
 
 ##### Image show the Home page of the website
+
+
+<img width="1348" height="630" alt="image" src="https://github.com/user-attachments/assets/dc9bf738-0719-4a7c-b997-5ee306a0787c" />
