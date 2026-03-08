@@ -15,3 +15,10 @@ Our garage is more than a workspace — it’s a place where quality craftsmansh
 
 
 <img width="1348" height="630" alt="image" src="https://github.com/user-attachments/assets/dc9bf738-0719-4a7c-b997-5ee306a0787c" />
+
+## NB
+**Note**
+- Hosted the site in Infinity Free, The Link in the About Section will take you to the site itself.
+- Free domains `(.rf.gd, .epizy.com, etc.)` are often used by spammers & Browsers flag them as "potentially dangerous" by default.
+- 💡 For Now, Click "Details" then "Visit this unsafe site".
+- 100% guaranteed this site is safe 
