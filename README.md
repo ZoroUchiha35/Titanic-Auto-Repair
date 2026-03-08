@@ -1,4 +1,4 @@
-<img width="1348" height="630" alt="image" src="https://github.com/user-attachments/assets/495cc7cc-2925-4d59-9333-526bbc878377" /># Titanic-Auto-Repair
+# Titanic-Auto-Repair
 At Titanic Auto Repair, excellence isn’t a claim — it’s our standard.<br>
 
 We are a dedicated automotive service garage built on experience, precision, and integrity. Every vehicle that enters our workshop is treated with professional care and technical attention, whether it’s a routine service, complex engine diagnostics, electrical troubleshooting, or full body restoration.<br>
