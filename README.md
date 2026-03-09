@@ -16,6 +16,16 @@ Our garage is more than a workspace — it’s a place where quality craftsmansh
 
 <img width="1348" height="630" alt="image" src="https://github.com/user-attachments/assets/dc9bf738-0719-4a7c-b997-5ee306a0787c" />
 
+
+## ✨ Features
+
+- ✅ **User Registration & Login System**
+- ✅ **Secure Password Hashing**
+- ✅ **Service Booking Interface**
+- ✅ **Responsive Design (Mobile Friendly)**
+- ✅ **7 Professional Auto Services**
+- ✅ **Customer Dashboard**
+
 ## NB
 **Note**
 - Hosted the site in Infinity Free, The Link in the About Section will take you to the site itself.
