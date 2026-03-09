@@ -42,7 +42,6 @@ Our garage is more than a workspace — it’s a place where quality craftsmansh
 
 <p align="center">
   <img src="https://img.shields.io/badge/established-2018-red?style=for-the-badge" alt="Established">
-  <img src="https://img.shields.io/badge/customers-500%2B-success?style=for-the-badge" alt="Customers">
   <img src="https://img.shields.io/badge/repairs-1000%2B-informational?style=for-the-badge" alt="Repairs">
   <img src="https://img.shields.io/badge/rating-4.9%2F5-yellow?style=for-the-badge" alt="Rating">
 </p>
@@ -56,7 +55,6 @@ Our garage is more than a workspace — it’s a place where quality craftsmansh
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare">
   <img src="https://img.shields.io/badge/InfinityFree-000000?style=for-the-badge&logo=icloud&logoColor=white" alt="InfinityFree">
   <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
 </p>
