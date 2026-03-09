@@ -33,6 +33,7 @@ Our garage is more than a workspace — it’s a place where quality craftsmansh
 - 💡 For Now, Click "Details" then "Visit this unsafe site".
 - 100% guaranteed this site is safe
 
+<br><br>
 <p align="center">
   <img src="https://img.shields.io/badge/status-live-brightgreen?style=for-the-badge" alt="Live">
   <img src="https://img.shields.io/badge/version-2.0-blue?style=for-the-badge" alt="Version">
